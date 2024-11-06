@@ -26,7 +26,7 @@ namespace WebView2_WinUI3_Sample
             // to use the following code (update the runtime version to what your shipping.
 
             //StorageFolder localFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-            //String fixedPath = Path.Combine(localFolder.Path, "FixedRuntime\\95.0.1020.53");
+            //String fixedPath = Path.Combine(localFolder.Path, "FixedRuntime\\130.0.2849.39");
             //Debug.WriteLine($"Launch path [{localFolder.Path}]");
             //Debug.WriteLine($"FixedRuntime path [{fixedPath}]");
             //Environment.SetEnvironmentVariable("WEBVIEW2_BROWSER_EXECUTABLE_FOLDER", fixedPath);
