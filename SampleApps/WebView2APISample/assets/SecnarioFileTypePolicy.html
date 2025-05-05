@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>ScenarioFileTypePolicy</title>
-    <script>    
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             async function saveFile() {
                 let ext = document.getElementById("extensionText");
@@ -16,6 +16,22 @@
             }
             document.getElementById('showSaveFilePickerButton').addEventListener('click', saveFile);
         });
+        function enable_smartscreen() {
+            window.chrome.webview.postMessage("enable_smartscreen");
+        }
+        function disable_smartscreen() {
+            window.chrome.webview.postMessage("disable_smartscreen");
+        }
+        function allow_exe() {
+            window.chrome.webview.postMessage("allow_exe");
+        }
+        function block_exe() {
+            window.chrome.webview.postMessage("block_exe");
+        }
+        function clear_exe_policy() {
+            window.chrome.webview.postMessage("clear_exe_policy");
+        }
+
     </script>
 </head>
 <body>
@@ -23,8 +39,35 @@
     <p>Two customized example rules in this demo:</p>
     <p>1. Smoothly save *.eml file without file extension warning</p>
     <p>2. Intentionally block save *.iso file</p>
-    <p>Please enter a file extension: <input type="text" id="extensionText" placeholder="try eml or iso" />
-    <button id="showSaveFilePickerButton">save</button></p>
+    <p>3. Block or bypass *.exe file based on configuration</p>
+    <p>4. Block or bypass *.exe file based on popup response</p>
+    <p>
+        <button onclick="allow_exe()">Allow exe</button>
+    </p>
+    <p>
+        <button onclick="block_exe()">Block exe</button>
+    </p>
+    <p>
+        <button onclick="clear_exe_policy()">Clear exe policy</button>
+    </p>
+    <h2>File Type Policy API for Save File</h2>
+    <p>
+        Please enter a file extension: <input type="text" id="extensionText" placeholder="try eml or iso" />
+        <button id="showSaveFilePickerButton">save</button>
+    </p>
     <br>
+    <hr />
+    <h2>File Type Policy API for download</h2>
+
+    <br />
+    <button onclick="enable_smartscreen()">Enable Smartscreen</button>
+    <br />
+    <br />
+    <button onclick="disable_smartscreen()">Disable Smartscreen</button>
+    <br />
+    <a href="https://appassets.example/sample.exe" id="download_exe" download>Download exe file</a>
+    <br />
+    <a href="https://appassets.example/sample.emlx" id="download_emlx" download>Download emlx file</a>
+
 </body>
 </html>
